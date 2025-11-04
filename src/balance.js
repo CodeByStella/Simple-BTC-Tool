@@ -14,5 +14,9 @@ export async function fetchBalance(address, { network = 'mainnet' } = {}) {
 }
 
 export function satsToBtc(sats) {
-  return (sats / 1e8).toFixed(8)
+  const value = Number(sats)
+  if (!Number.isFinite(value)) {
+    return '0.00000000'
+  }
+  return (value / 1e8).toFixed(8)
 }
