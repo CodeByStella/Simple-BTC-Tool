@@ -1,16 +1,44 @@
-# React + Vite
+# Simple BTC Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight React + Vite application for validating Bitcoin addresses, checking balances via the Blockstream explorer, and deriving addresses from private keys. All key operations run locally in the browser so that sensitive data never leaves the client.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Address validation** – supports Base58 (P2PKH & P2SH) and bech32 (SegWit) formats with instant feedback.
+- **Balance lookup** – fetches confirmed, mempool, and total balances from the Blockstream API for mainnet and testnet addresses.
+- **Private key checks** – accepts WIF and 64 character hex keys, validates them locally, and derives P2PKH, P2WPKH, and P2SH-P2WPKH addresses.
+- **Copy helpers** – quickly copy the input address or derived outputs to the clipboard with accessible status messaging.
+- **UI enhancements** – responsive layout, improved form semantics, validation states, and clear error handling for a smoother UX.
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   Vite will print a local URL where you can open the app in your browser.
+3. Run a production build (optional):
+   ```bash
+   npm run build
+   ```
 
-## Expanding the ESLint configuration
+## Privacy & security
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Private keys are validated and derived entirely client-side. No network requests are performed with key material.
+- Balance lookups query the public Blockstream API. If the service is unavailable or rate limited, simply try again later.
+- Never paste real private keys on an untrusted device. For maximum safety consider running this tool offline.
+
+## Project structure
+
+- `src/App.jsx` – React components and UI logic.
+- `src/btc.js` – validation helpers and address derivation utilities built on `bitcoinjs-lib`.
+- `src/balance.js` – balance fetching helpers for the Blockstream API.
+- `src/index.css` – Tailwind-powered design tokens and component styles.
+
+## License
+
+This project is provided as-is without warranty. Use at your own risk.
