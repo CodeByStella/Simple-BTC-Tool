@@ -11,45 +11,23 @@ export default function App() {
       <div className="orb orb-3"></div>
 
       <header className="relative z-20">
-        <div className="max-w-5xl mx-auto px-6 pt-8 pb-6">
-          <div className="header-shell">
-            <div className="header-brand">
-              <div className="logo-glass">
-                <span className="text-2xl font-black">₿</span>
-                <div className="logo-glass__shine" aria-hidden="true"></div>
-              </div>
-              <div className="header-copy">
-                <p className="header-eyebrow">Simple BTC Tool</p>
-                <h1 className="header-title">Premium Bitcoin Intelligence Suite</h1>
-                <p className="header-subtitle">Client-side analysis. No sign-ups, no tracking.</p>
-              </div>
+        <div className="max-w-5xl mx-auto px-6 pt-8 pb-6 flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="logo-glass">
+              <span className="text-2xl font-black">₿</span>
+              <div className="logo-glass__shine" aria-hidden="true"></div>
             </div>
-            <div className="header-actions">
-              <div className="header-badge">
-                <span className="header-status" aria-hidden="true"></span>
-                <span>Runs entirely in your browser</span>
-              </div>
-              <a
-                className="star-btn"
-                href="https://github.com/victorevc/Simple-BTC-Tool"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <svg
-                  className="star-btn__icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M12 3.75 14.31 9l5.19.38-3.9 3.36 1.18 5.13L12 15.96l-4.78 1.91L8.4 12.74l-3.9-3.36L9.69 9 12 3.75z" />
-                </svg>
-                <span>Star this repository</span>
-              </a>
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/90">Simple BTC Tool</p>
+              <h1 className="text-2xl font-bold text-white drop-shadow-sm">Premium Address & Key Dashboard</h1>
             </div>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-cyan-200/80">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-500/10 backdrop-blur">
+              <span className="text-cyan-200 text-xs">Client-Side</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            </div>
+            <span className="hidden sm:block text-cyan-200/60">No sign-ups, no tracking.</span>
           </div>
         </div>
       </header>
@@ -68,87 +46,42 @@ export default function App() {
 
 function Hero() {
   const features = [
-    {
-      title: 'Format savant',
-      text: 'Understands legacy Base58, nested SegWit, native SegWit, and taproot bech32m instantly.',
-      icon: '🎯',
-    },
-    {
-      title: 'Balance pulse',
-      text: 'Pulls confirmed, unconfirmed, and total balances from Blockstream with graceful fallbacks.',
-      icon: '📡',
-    },
-    {
-      title: 'Secure derivation',
-      text: 'Derives P2PKH, P2WPKH, and P2SH-P2WPKH locally—keys never leave your browser.',
-      icon: '🔐',
-    },
-  ]
-
-  const metrics = [
-    { label: 'Supported networks', value: 'Mainnet & Testnet' },
-    { label: 'Checks completed', value: 'Instant feedback in <1s' },
-    { label: 'Clipboard helpers', value: 'Accessible copy confirmations' },
+    { title: 'Bech32 & Base58', text: 'Detects legacy, nested SegWit, and native SegWit instantly.' },
+    { title: 'Balance Lookup', text: 'Pulls confirmed and mempool totals from Blockstream.' },
+    { title: 'Secure Derivation', text: 'Derives common address types entirely in your browser.' },
   ]
 
   return (
     <section className="hero-card">
       <div className="hero-card__glow" aria-hidden="true"></div>
       <div className="hero-card__content">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <div className="hero-eyebrow">Ultra glass experience</div>
-            <h2 className="hero-title">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div className="space-y-5 max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-200 text-xs uppercase tracking-[0.4em]">
+              Ultra UI
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white">
               Validate Bitcoin addresses & keys with <span className="gradient-text">immersive clarity</span>.
             </h2>
-            <p className="hero-lead">
-              A cinematic dashboard that pairs luminous gradients with precise tooling. Inspect addresses, surface balances, and
-              verify private keys without sending any data away.
+            <p className="text-base sm:text-lg text-cyan-100/80 max-w-xl">
+              Designed with a premium, glassmorphism-inspired interface that keeps every detail sharp. Instant feedback, detailed balances, and secure derivations live entirely on your device.
             </p>
-            <div className="hero-actions">
-              <a className="btn btn-glow" href="#address-tool">
-                <span>Start validating</span>
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                  className="hero-action__icon"
-                >
-                  <path
-                    d="M5 10h10M11 6l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            <div className="flex flex-wrap items-center gap-4">
+              <a className="btn" href="#address-tool">
+                Start validating
               </a>
-              <div className="hero-pills">
+              <div className="flex items-center gap-3 text-sm text-cyan-200/80">
                 <span className="pill">Offline Ready</span>
                 <span className="pill">Open Source</span>
               </div>
             </div>
-            <dl className="hero-metrics">
-              {metrics.map(metric => (
-                <div key={metric.label} className="hero-metric">
-                  <dt>{metric.label}</dt>
-                  <dd>{metric.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
-          <div className="hero-showcase">
+          <div className="hero-features">
             {features.map(feature => (
               <div key={feature.title} className="hero-feature">
                 <div className="hero-feature__accent"></div>
-                <div className="hero-feature__icon" aria-hidden="true">
-                  {feature.icon}
-                </div>
-                <div>
-                  <h3 className="hero-feature__title">{feature.title}</h3>
-                  <p className="hero-feature__text">{feature.text}</p>
-                </div>
+                <h3 className="hero-feature__title">{feature.title}</h3>
+                <p className="hero-feature__text">{feature.text}</p>
               </div>
             ))}
           </div>
